@@ -8,7 +8,7 @@ export const googleStrategy = new GoogleStrategy(
   {
     clientID: process.env.GOOGLE_CLIENT_ID as string,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-    callbackURL: "/api/auth/googleSignIn/callback",
+    callbackURL: "/api/admin/googleSignIn/callback",
     passReqToCallback: true,
   },
   async (
