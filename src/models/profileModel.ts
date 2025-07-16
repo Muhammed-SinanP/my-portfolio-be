@@ -9,7 +9,7 @@ export interface IProfile extends Document {
   resume?: string;
   contact: {
     number: number;
-    email: string;
+    gmail: string;
     address?: {
       district?: string;
       state?: string;
@@ -17,7 +17,7 @@ export interface IProfile extends Document {
     };
   };
   socialLinks?: {
-    email?: string;
+    gmail?: string;
     linkedIn?: string;
     gitHub?: string;
     instagram?: string;
@@ -48,7 +48,7 @@ const profileSchema: Schema<IProfile> = new Schema(
     resume: String,
     contact: {
       phone: { type: String, required: true },
-      email: { type: String, required: true },
+      gmail: { type: String, required: true },
       address: {
         district: String,
         state: String,
@@ -56,7 +56,7 @@ const profileSchema: Schema<IProfile> = new Schema(
       },
     },
     socialLinks: {
-      email: String,
+      gmail: String,
       linkedIn: String,
       gitHub: String,
       instagram: String,

@@ -278,7 +278,7 @@ export const addProject = async (
         if (error || !result) {
           return res.status(500).json({ message: "Cloudinary upload failed" });
         }
-
+        const projectsCount = await Project.find().countDocuments();
         const newProject: IProject = new Project({
           title,
           category,
@@ -290,6 +290,7 @@ export const addProject = async (
           liveLink,
           type,
           client,
+          order: projectsCount + 1,
         });
 
         await newProject.save();
@@ -332,13 +333,14 @@ export const addCertification = async (
         if (error || !result) {
           return res.status(500).json({ message: "Cloudinary upload failed" });
         }
-
+        const certificationsCount = await Certification.find().countDocuments();
         const newCertification: ICertification = new Certification({
           title,
           issuer,
           certificate: result.secure_url,
           description,
           verificationLink,
+          order: certificationsCount + 1,
         });
 
         await newCertification.save();
