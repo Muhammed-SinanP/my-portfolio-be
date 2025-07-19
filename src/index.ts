@@ -11,22 +11,15 @@ connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const allowedOrigins = [
-  process.env.FE_URL,
-  "http://192.168.1.2:3000",
-  "http://192.168.1.3:3000",
-  "http://192.168.1.4:3000",
-  "http://192.168.1.5:3000",
-  "http://192.168.1.6:3000",
-].filter((origin): origin is string => typeof origin === "string");
 
 const corsOptions = {
-  origin: allowedOrigins,
+  origin: process.env.FE_URL,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
